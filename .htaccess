@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.*) index.php
+
+#Header unset ETag
+#FileETag None
+
+<IfModule mod_expires.c>
+ExpiresActive On
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+ExpiresDefault "access plus 1 year"
+</FilesMatch>
+</IfModule>
+
+SetOutputFilter DEFLATE
+<FilesMatch ".(js|css|html|htm|php|xml)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
