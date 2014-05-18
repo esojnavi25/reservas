@@ -1,1 +1,0 @@
-<p><?php echo __("Message"); ?>: <?php echo $message; ?></p>
