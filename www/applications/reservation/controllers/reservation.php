@@ -7,7 +7,7 @@ class Reservation_Controller extends ZP_Load
 {
 	public function __construct()
 	{
-		$this->application = $this->app("default");
+		$this->application = $this->app("reservation");
 
 		$this->Templates = $this->core("Templates");
 
@@ -24,10 +24,10 @@ class Reservation_Controller extends ZP_Load
 		$this->render("content", $vars);
 	}
 
-	public function test($param1 = "Hola", $param2 = "Adios")
-	{
-		print "New dispatcher it's works fine: $param1, $param2";
-	}
+	// public function test($param1 = "Hola", $param2 = "Adios")
+	// {
+	// 	print "New dispatcher it's works fine: $param1, $param2";
+	// }
 
 	public function apart()
 	{
@@ -49,13 +49,13 @@ class Reservation_Controller extends ZP_Load
 		# code...
 	}
 
-	public function show($message)
-	{
-		$this->title("ZanPHP");
-
-		$vars["message"] = $message;
-		$vars["view"] = $this->view("show", true);
-
-		$this->render("content", $vars);
-	}
+	// public function show($message)
+	// {
+	// 	$this->title("ZanPHP");
+	//
+	// 	$vars["message"] = $message;
+	// 	$vars["view"] = $this->view("show", true);
+	//
+	// 	$this->render("content", $vars);
+	// }
 }
