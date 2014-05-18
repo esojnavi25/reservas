@@ -5,7 +5,7 @@
 
 <div id="footer">
   <div class="container">
-    <p class="text-muted pull-right">[Made with <span class="glyphicon glyphicon-heart"></span> by Arandi López]</p>
+    <p class="text-muted pull-right"><span class="glyphicon glyphicon-chevron-left"></span><span class="glyphicon glyphicon-chevron-right"></span> made with <span class="glyphicon glyphicon-heart"></span> by Arandi López</p>
   </div>
 </div>
 
