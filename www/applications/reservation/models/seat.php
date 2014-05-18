@@ -10,11 +10,9 @@ class Seat_Model extends ZP_Load
 		$this->Db = $this->db();
 
 		$this->table = "seat";
-		$this->fields = "ID_Seat, Position, Status, Reservation";
+		$this->fields = "ID_Seat, Position, Status";
 	}
 
-	public function getContact($contactID)
-	{
-		return $this->Db->find($contactID, $this->table, $this->fields);
-	}
+	
+
 }

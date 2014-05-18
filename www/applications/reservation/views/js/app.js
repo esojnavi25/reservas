@@ -9,33 +9,18 @@ $(document).ready(function () {
 
   $('.seat').removeClass('btn-default');
   $('.seat').addClass('btn-success');
-  $('.seat').data('state', 'free');
+  $('.seat').data('status', 'free');
 
 
   // Listener del boton de reservacion de asientos
 
   $('#btn-reserv').on('click', function() {
-    BootstrapDialog.show({
-      title: 'Confirmación de Reserva',
-      message: '¿Desea confirmar su reservación de asientos?',
-      buttons:[{
-        id: 'btn-ok-warning-5-seats',
-        label: 'OK',
-        cssClass: 'btn-primary',
-        autospin: false,
-        action: function(ref) {
-          ref.close();
-        }
-      },
-      {
-        id: 'btn-cancel-reserv',
-        label: 'Cancelar',
-        cssClass: 'btn-danger',
-        autospin: false,
-        action: function(ref) {
-          ref.close();
-        }
-      }]
+    BootstrapDialog.confirm('¿Desea confirmar su reserva?', function(result){
+      if(result) {
+        alert('Yup.');
+      }else {
+        alert('Nope.');
+      }
     });
   });
 
@@ -46,65 +31,43 @@ $(document).ready(function () {
   $('.seat').each(function(){
     $( this ).on('click', function(){
 
-      switch($(this).data('state')){ //Iterar en el estado del asiento
+      switch($(this).data('status')){ //Iterar en el estado del asiento
       case 'free':
         if(reservation.seats < 5){
           $( this ).removeClass('btn-success');
           $( this ).addClass('btn-default');
-          $(this).data('state', 'mine');
+          $(this).data('status', 'mine');
           reservation.seats++;
           $('#my-seats-list').append("<li id=\"list-" + $(this).data('position') + "\">" + $(this).data('position') + "</li>");
         }else{
-          BootstrapDialog.show({
+          BootstrapDialog.alert({
+            type: BootstrapDialog.TYPE_WARNING,
             title: 'Alerta!!!',
-            message: 'Solo se tiene un maximo de 5 asientos por reservación.',
-            buttons:[{
-              id: 'btn-ok-warning-5-seats',
-              label: 'OK',
-              cssClass: 'btn-primary',
-              autospin: false,
-              action: function(ref) {
-                ref.close();
-              }
-            }]
+            message: 'Solo se tiene un maximo de 5 asientos por reservación.'
           });
         }
         break;
 
       case 'reserved':
-        BootstrapDialog.show({
+        BootstrapDialog.alert({
+          type: BootstrapDialog.TYPE_WARNING,
           title: 'Alerta!!!',
-          message: 'Este lugar ya se encuentra reservado',
-          buttons:[{
-            id: 'btn-ok-warning-reserved-seats',
-            label: 'OK',
-            cssClass: 'btn-primary',
-            autospin: false,
-            action: function(ref) {
-              ref.close();
-            }
-          }]
+          message: 'Este lugar ya se encuentra reservado'
         });
         break;
 
       case 'aparted':
-        BootstrapDialog.show({
+        BootstrapDialog.alert({
+          type: BootstrapDialog.TYPE_WARNING,
           title: 'Alerta!!!',
-          message: 'Este lugar ya se encuentra apartado por otro usuario.',
-          buttons:[{
-            id: 'btn-ok-warning-aparted-seats',
-            label: 'OK',
-            cssClass: 'btn-primary',
-            autospin: false,
-            action: function(ref){ref.close();}
-          }]
+          message: 'Este lugar ya se encuentra apartado por otro usuario.'
         });
         break;
 
       case 'mine':
         $( this ).removeClass('btn-default');
         $( this ).addClass('btn-success');
-        $(this).data('state', 'free');
+        $(this).data('status', 'free');
         reservation.seats--;
         var pos = "#list-" + $(this).data('position');
         $(pos).remove();
@@ -116,12 +79,8 @@ $(document).ready(function () {
     });
   });
 
-  // $(window).unload(function(event) {
-  //   event.preventDefault();
-  //   alert( "Bye now!" );
-  // });
-
   $(window).bind('beforeunload', function(){
     return 'Al salir de la pagina se perdera su reserva y sus asientos apartados';
   });
+  
 });
