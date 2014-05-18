@@ -13,6 +13,10 @@ class Seat_Model extends ZP_Load
 		$this->fields = "ID_Seat, Position, Status, Reservation";
 	}
 
-
+	public function getAllSeats()
+	{
+		# code...
+		return $this->Db->findAll($this->table, $this->fields);
+	}
 
 }

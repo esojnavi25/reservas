@@ -15,7 +15,8 @@ class Reservation_Controller extends ZP_Load
 
 		$this->Templates->theme();
 
-		// $this->Reservation_Model = $this->model("Reservation_Model");
+		$this->Reservation_Model = $this->model("Reservation_Model");
+		$this->Seat_Model = $this->model('Seat_Model');
 	}
 
 	public function index()
@@ -30,6 +31,13 @@ class Reservation_Controller extends ZP_Load
 	public function apart()
 	{
 		# code...
+		if($_SERVER['REQUEST_METHOD'] === "POST"){
+			$json = file_get_contents('php://input');
+			$obj = json_decode($json, true);
+			____($obj);
+		}else {
+			echo "Nothing happend";
+		}
 	}
 
 	public function reserv()
@@ -42,9 +50,15 @@ class Reservation_Controller extends ZP_Load
 		# code...
 	}
 
+	/**
+	* @response: json seats data
+	* @method: GET
+	*/
 	public function seats()
 	{
 		# code...
+		$data = $this->Seat_Model->getAllSeats();
+		echo json_encode($data);
 	}
 
 	// public function show($message)

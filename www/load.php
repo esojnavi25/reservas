@@ -1,12 +1,12 @@
-<?php 
+<?php
 if (!defined("ACCESS")) {
 	die("Error: You don't have permission to access here...");
 }
 
 include "requirements.php";
 
-$Load = new ZP_Load(); 
-$Load->helper(array("exceptions", "i18n", "sessions", "router", "string"));
+$Load = new ZP_Load();
+$Load->helper(array("exceptions", "i18n", "sessions", "router", "string", "debugging", "alerts", "validations", "security", "time"));
 
 include "configuration.php";
 
