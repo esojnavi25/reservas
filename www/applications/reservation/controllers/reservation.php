@@ -18,9 +18,9 @@ class Reservation_Controller extends ZP_Load
 
 	public function index()
 	{
-		$vars["message"] = __("Hello World");
-		$vars["view"] = $this->view("show", true);
-
+		$this->title("Reservaciones");
+		$this->Templates->js("app", $this->application);
+		$vars["view"] = $this->view("main", true);
 		$this->render("content", $vars);
 	}
 
