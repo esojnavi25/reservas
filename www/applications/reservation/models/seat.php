@@ -10,9 +10,9 @@ class Seat_Model extends ZP_Load
 		$this->Db = $this->db();
 
 		$this->table = "seat";
-		$this->fields = "ID_Seat, Position, Status";
+		$this->fields = "ID_Seat, Position, Status, Reservation";
 	}
 
-	
+
 
 }
