@@ -19,4 +19,15 @@ class Seat_Model extends ZP_Load
 		return $this->Db->findAll($this->table, $this->fields);
 	}
 
+	public function updateStatus($position, $status, $reservation)
+	{
+		# code...
+		$data = array(
+			'Status' => $status,
+			'Reservation' => $reservation
+		);
+
+		$this->Db->update();
+	}
+
 }

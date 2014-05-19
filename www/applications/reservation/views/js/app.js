@@ -79,8 +79,8 @@ $(document).ready(function () {
     });
   });
 
-  $(window).bind('beforeunload', function(){
-    return 'Al salir de la pagina se perdera su reserva y sus asientos apartados';
-  });
-  
+  // $(window).bind('beforeunload', function(){
+  //   return 'Al salir de la pagina se perdera su reserva y sus asientos apartados';
+  // });
+
 });

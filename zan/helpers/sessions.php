@@ -8,11 +8,11 @@ if (!function_exists("COOKIE")) {
 	{
 		if ($value) {
 			setcookie($cookie, filter($value), time() + $time, "/");
-		
+
 			if ($redirect) {
-				redirect(isset($URL) ? $URL : _get("webBase"));		
+				redirect(isset($URL) ? $URL : _get("webBase"));
 			}
-		} else {	
+		} else {
 			return isset($_COOKIE[$cookie]) ? filter($_COOKIE[$cookie]) : false;
 		}
 	}
@@ -22,38 +22,30 @@ if (!function_exists("createLoginSessions")) {
 	function createLoginSessions($data, $redirect = true)
 	{
 		if (is_array($data)) {
-			SESSION("ZanUserServiceID", isset($data["ID_Service"]) ? (int) $data["ID_Service"] : false);
-			SESSION("ZanUser", $data["Username"]);
-			SESSION("ZanUserName", $data["Name"]);
-			SESSION("ZanUserPwd", $data["Pwd"]);
-			SESSION("ZanUserAvatar", $data["Avatar"]);
-			SESSION("ZanUserID", (int) $data["ID_User"]);
-			SESSION("ZanUserPrivilegeID", (int) $data["ID_Privilege"]);
-			SESSION("ZanUserBookmarks", (int) $data["Bookmarks"]);
-			SESSION("ZanUserCodes", (int) $data["Codes"]);
-			SESSION("ZanUserPosts", (int) $data["Posts"]);
-			SESSION("ZanUserRecommendation", (int) $data["Recommendation"]);
+			SESSION('ReservationID',$data['ID_Reservation']);
+			SESSION('ReservationName', $data['Name']);
+			SESSION('ReservationTime', $data['Time']);
 
-			if ($redirect) {						
+			if ($redirect) {
 				redirect(SESSION("lastURL"));
 			}
 		} else {
 			redirect();
-		}	
+		}
 
 		return true;
 	}
 }
 
-if (!function_exists("SESSION")) { 
+if (!function_exists("SESSION")) {
 	function SESSION($session, $value = false)
 	{
 		if (!$value) {
-			return isset($_SESSION[$session]) ? $_SESSION[$session] : false;			
+			return isset($_SESSION[$session]) ? $_SESSION[$session] : false;
 		} else {
 			$_SESSION[$session] = filter($value);
 		}
-		
+
 		return true;
 	}
 }
@@ -72,9 +64,9 @@ if (!function_exists("isAdmin")) {
 if (!function_exists("isConnected")) {
 	function isConnected($URL = false)
 	{
-		if (!SESSION("ZanUser")) {			
+		if (!SESSION("ZanUser")) {
 			redirect(($URL !== false) ? $URL : path("users/login/?return_to=". urlencode(getURL())));
-		} 
+		}
 
 		return true;
 	}
@@ -94,6 +86,6 @@ if (!function_exists("unsetSessions")) {
 		$lastURL = SESSION("lastURL");
 		session_unset();
 		session_destroy();
-		redirect(($URL) ? $URL : $lastURL);	
+		redirect(($URL) ? $URL : $lastURL);
 	}
 }

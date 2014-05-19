@@ -13,4 +13,16 @@ class Reservation_Model extends ZP_Load
 		$this->fields = "ID_Reservation, Name, Time";
 	}
 
+	public function createReservation($name)
+	{
+		$data = array('Name' => $name);
+		$IDResvation = $this->Db->insert($this->table, $data);
+	}
+
+	public function getReservationData($reservationID)
+	{
+		# code...
+	}
+
+
 }

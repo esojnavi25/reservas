@@ -26,9 +26,27 @@ class Reservation_Controller extends ZP_Load
 	*/
 	public function index()
 	{
-
+		$this->register();
 	}
 
+	/**
+	*	Register view
+	*/
+	public function register()
+	{
+		# code...
+		$this->Templates->theme('inicio');
+		$this->title("Reservaciones");
+		$this->Templates->meta("description", "Sistema de Reservacion de Asientos del Teatro");
+		$this->Templates->meta("autor", "Arandi López");
+
+		$vars["view"] = $this->view("welcome", true);
+
+		$this->render("content", $vars);
+	}
+	/**
+	*	Reservations view
+	*/
 	public function reservations()
 	{
 		# Configuraciones para esta vista
@@ -40,6 +58,13 @@ class Reservation_Controller extends ZP_Load
 		$vars["view"] = $this->view("main", true);
 
 		$this->render("content", $vars);
+	}
+	/**
+	*	Cancellations view
+	*/
+	public function cancellations($reservationID)
+	{
+		# code...
 	}
 
 	/**
