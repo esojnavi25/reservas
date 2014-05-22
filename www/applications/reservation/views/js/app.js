@@ -7,6 +7,25 @@ $(document).ready(function () {
   //Inicializar toda la tabla de Asientos
   // $('#myModal').modal('show');
 
+  $('.seat').each(function() {
+    switch ($(this).data('status')) {
+    case 'free':
+
+      break;
+    case 'aparted':
+
+      break;
+    case 'reserved':
+
+      break;
+    case 'mine':
+
+      break;
+    default:
+      break;
+
+    }
+  });
   $('.seat').removeClass('btn-default');
   $('.seat').addClass('btn-success');
   $('.seat').data('status', 'free');
