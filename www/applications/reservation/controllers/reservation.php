@@ -42,6 +42,8 @@ class Reservation_Controller extends ZP_Load
 
 		$vars["view"] = $this->view("welcome", true);
 
+		$vars["alert"] = $this->Reservation_Model->register();
+
 		$this->render("content", $vars);
 	}
 	/**

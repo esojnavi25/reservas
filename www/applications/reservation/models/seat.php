@@ -21,13 +21,8 @@ class Seat_Model extends ZP_Load
 
 	public function updateStatus($position, $status, $reservation)
 	{
-		# code...
-		$data = array(
-			'Status' => $status,
-			'Reservation' => $reservation
-		);
 
-		$this->Db->update();
+		return $this->Db->updateBySQL($this->table, "Status='$status', Reservation='$reservation' WHERE Position='$position' LIMIT 1");
 	}
 
 }
