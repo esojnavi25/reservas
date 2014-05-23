@@ -1,27 +1,31 @@
-Introduction
-------------------------
-ZanPHP is an agile Web application development framework written in PHP5 that uses different design patterns and best practices to create applications more quickly with good quality code.
+Sistema de Reservación de Asientos.
+===================================
+Introducción
+------------
 
-Some of the advantages of ZanPHP are:
 
-    Easy to install and configure
-    Easy to learn
-    You can create almost any type of Web applications
-    Compatible with different platforms
-    Object oriented
-    Use lots of design patterns and best practices to produce higher quality code
-    Scalable applications and easy to maintain
-    Documentation in English and Spanish
-    Integration with jQuery and jQuery Mobile, Ajax and other new technologies
-    It is free software 
-
-Server Requirements
+Requisitos del Servidor
 -------------------------
-    PHP 5.1.X or higher
-    Databases supported: MySQL, MySQLi, MsSQL, Oracle, PostgreSQL and SQLite 
+    PHP 5.1.X or higher (recomended 5.4.X)
+    Databases supported: MySQL, MySQLi, MsSQL, Oracle, PostgreSQL and SQLite
 
-Credits
+Diseño del Sistema
 -------------------------
-ZanPHP was developed by Carlos Santana (CEO of MilkZoft). ZanPHP was developed in 2009, but was until July 2011 that took the decision to release as free software.
-Currently developing ZanPHP is maintained by the development team and contributors of MilkZoft community.
-Is achieved by implementing best practices to develop applications faster and with higher quality.
+  - Patron de diseño: [HMVC](http://arandilopez.blogspot.mx/2014/01/patrones-de-diseno-hmvc-y-pac.html "Patron de diseño HMVC")
+  - Estilo Arquitectonico SOA RESTful services
+  - Lenguaje de Programación
+    - Back-end: PHP5
+    - Front-end: HTML5, CSS3, Javascript
+
+Instalación
+---------------
+  1. Clonar este repositiorio en la raiz de tu carpeta de servidor (www o htdocs)
+  ```
+  $ git clone git@github.com:arandilopez/reservas.git (para ssh)
+  $ git clone https://github.com/arandilopez/reservas.git (para https)
+  ```
+  2. Renombrar los archivos `www/config/*` quitando el .example
+  3. En `config.php` añadir la ruta base que tendra la aplicacion, ej: `http:localhost/reservas`
+  4. En `database.php` añadir los datos para la conexión a la base de datos. Por defecto se usa el driver de `mysqli`
+  5. Añadir la base datos (se adjunta el archivo `reservas.sql`)
+  
