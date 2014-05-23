@@ -3,8 +3,8 @@
     <h1>Cancelaciones:</h1>
   </div>
   <div>
-    <h2>Nombre: <?php echo $reservation_data['Name']; ?></h2>
-    <h2>Numero de reservación: <?php echo $reservation_data['ID_Reservation']; ?></h2>
+    <h2>Nombre: <?php echo (isset($reservation_data['Name'])) ? $reservation_data['Name'] : null; ?></h2>
+    <h2>Número de reservación: <?php echo (isset($reservation_data['ID_Reservation'])) ? $reservation_data['ID_Reservation'] : null; ?></h2>
     <h3>Sus asientos:</h3>
       <?php if($seats_data){
         foreach ($seats_data as $seat) { ?>

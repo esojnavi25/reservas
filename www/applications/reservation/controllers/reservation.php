@@ -136,10 +136,12 @@ class Reservation_Controller extends ZP_Load
 					// ____($obj); //Just to debbug the param
 					$success = $this->Seat_Model->reserveSeats(SESSION('ReservationID'));
 					if($success){
-						// header("Content-Type: aplication/json; charset=utf-8");
-						// $data = array('response' => true);
-						// print json_encode($data, true);
-						$this->logout();
+						header("Content-Type: aplication/json; charset=utf-8");
+						$data = array(
+							'response' => true,
+							'id' => $obj['id']
+						);
+						print json_encode($data, true);
 					}else{
 						header("Content-Type: aplication/json; charset=utf-8");
 						$data = array(
@@ -279,7 +281,7 @@ class Reservation_Controller extends ZP_Load
 	* just for logout (destroy $_SESSION cookie)
 	*/
 	public function logout(){
-		unsetSessions(path(''));
+		unsetSessions();
 	}
 
 	public function freeAllSeats($reservationID)
