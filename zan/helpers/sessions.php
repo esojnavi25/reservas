@@ -25,6 +25,7 @@ if (!function_exists("createLoginSessions")) {
 			SESSION('ReservationID',$data['ID_Reservation']);
 			SESSION('ReservationName', $data['Name']);
 			SESSION('ReservationTime', $data['Time']);
+			SESSION('ExpirationTime', time() + 1800);
 
 			if ($redirect) {
 				redirect(SESSION("lastURL"));
@@ -87,5 +88,15 @@ if (!function_exists("unsetSessions")) {
 		session_unset();
 		session_destroy();
 		redirect(($URL) ? $URL : $lastURL);
+	}
+}
+if(!function_exists('session_has_expired')){
+	function session_has_expired(){
+		$now = time();
+		if( $now > SESSION('ExpirationTime') ){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
