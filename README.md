@@ -20,12 +20,13 @@ Diseño del Sistema
 Instalación
 ---------------
   1. Clonar este repositiorio en la raiz de tu carpeta de servidor (www o htdocs)
+
   ```
   $ git clone git@github.com:arandilopez/reservas.git (para ssh)
   $ git clone https://github.com/arandilopez/reservas.git (para https)
   ```
+
   2. Renombrar los archivos `www/config/*` quitando el .example
   3. En `config.php` añadir la ruta base que tendra la aplicacion, ej: `http:localhost/reservas`
   4. En `database.php` añadir los datos para la conexión a la base de datos. Por defecto se usa el driver de `mysqli`
   5. Añadir la base datos (se adjunta el archivo `reservas.sql`)
-  
