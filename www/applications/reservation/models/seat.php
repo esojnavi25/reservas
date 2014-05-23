@@ -29,7 +29,7 @@ class Seat_Model extends ZP_Load
 	{
 		# code...
 		$data = $this->Db->findBy('Reservation', $reservationID, $this->table);
-		return count($data);
+		return ($data) ? count($data) : 0 ;
 	}
 
 	public function updateStatus($position, $status, $reservation)
@@ -47,7 +47,7 @@ class Seat_Model extends ZP_Load
 	{
 		# code...
 		$status = FREE_STATUS;
-		return $this->Db->updateBySQL($this->table, "Status='$status' WHERE Reservation=1");
+		return $this->Db->updateBySQL($this->table, "Status='$status', Reservation=1 WHERE Reservation=$reservationID");
 	}
 
 	public function reserveSeats($reservationID)

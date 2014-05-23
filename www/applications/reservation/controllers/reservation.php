@@ -142,7 +142,10 @@ class Reservation_Controller extends ZP_Load
 						$this->logout();
 					}else{
 						header("Content-Type: aplication/json; charset=utf-8");
-						$data = array('response' => false);
+						$data = array(
+							'response' => false,
+							'id' => $obj['id']
+						);
 						print json_encode($data, true);
 					}
 				}else{
@@ -252,20 +255,44 @@ class Reservation_Controller extends ZP_Load
 		}
 	}
 
-	//******************** Private functions for performance **********************
+	public function my_seats_data($reservationID)
+	{
+		# code...
+		if(SESSION('ReservationID')){
+			if($_SERVER['REQUEST_METHOD'] == "GET"){
+				header("Content-Type: aplication/json; charset=utf-8");
+				$data = $this->Seat_Model->getSeatsByReservation($reservationID);
+				print json_encode($data);
+			}else {
+				http_response_code(405);
+				print "No response available in your HTTP Request Type...";
+			}
+		}else{
+			http_response_code(403);
+			print 'Access denied';
+		}
+	}
+
+	//******************** functions for performance **********************
 
 	/**
 	* just for logout (destroy $_SESSION cookie)
 	*/
-	private function logout(){
+	public function logout(){
 		unsetSessions(path(''));
+	}
+
+	public function freeAllSeats($reservationID)
+	{
+		# code...
+		$success = $this->Seat_Model->freeAllByReservation($reservationID);
 	}
 
 	/**
 	* Close the current reservation if the session has expired
 	* This also has to free the seats that are aparted in the Reservation to close
 	*/
-	private function closeReservation()
+	public function closeReservation()
 	{
 		# code...
 		$reservationID = SESSION('ReservationID');

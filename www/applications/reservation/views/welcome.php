@@ -6,7 +6,7 @@
 		<form method="post" role="form" action="<?php echo path('reservation/'); ?>">
 			<div class="form-group">
 				<label>
-					<p class="lead">Para hacer una reservacion ingrese su nombre:</p>
+					<p class="lead">Para hacer una reservación ingrese su nombre:</p>
 					<?php echo (isset($alert)) ? $alert : null ; ?>
 					<input type="name" name="name" class="form-control" required />
 				</label>
