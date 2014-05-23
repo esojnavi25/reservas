@@ -18,7 +18,7 @@
 			<div class="form-group">
 				<label>
 					<p class="lead">O bien, ingrese su numero de reservación para hacer una cancelación</p>
-					<input id="cancellationNumber" type="name" class="form-control" required/>
+					<input id="cancellationNumber" type="name" class="form-control" required />
 				</label>
 			</div>
 			<div class="form-group">
