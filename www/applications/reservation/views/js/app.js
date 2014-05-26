@@ -9,25 +9,25 @@ var mySeats = [];
 
 function success_reserveSeats(data) {
   // body...
-  BootstrapDialog.confirm("Su reservación ha sido guardada\nUse su número de reservación para cancelaciones de asientos\nNúmero de Reservación: " + reservation.id + "", function(result){
-    if(result) {
-      window.location = baseUrl + "/reservation/logout";
-    }else{
-      window.location = baseUrl;
-    }
-  });
+  // BootstrapDialog.confirm("Su reservación ha sido guardada\nUse su número de reservación para cancelaciones de asientos\nNúmero de Reservación: " + reservation.id + "", function(result){
+  //   if(result) {
+  //     window.location = baseUrl + "/reservation/logout";
+  //   }else{
+  //     window.location = baseUrl;
+  //   }
+  // });
   BootstrapDialog.show({
-    title: 'Confirmación',
+    title: 'Reservación hecha',
+    type: BootstrapDialog.TYPE_INFO,
     message: 'Su reservación ha sido guardada\nUse su número de reservación para cancelaciones de asientos\nNúmero de Reservación: '+ reservation.id + "",
+    closable: false,
+    closeByBackdrop: false,
+    closeByKeyboard: false,
     buttons: [{
       label: 'OK',
+      cssClass: 'btn-primary',
       action: function(dialog) {
-        dialog.setTitle('Title 1');
-      }
-    }, {
-      label: 'Title 2',
-      action: function(dialog) {
-        dialog.setTitle('Title 2');
+        window.location = baseUrl + "/reservation/logout";
       }
     }]
   });
