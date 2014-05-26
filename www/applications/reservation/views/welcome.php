@@ -22,7 +22,7 @@
 				</label>
 			</div>
 			<div class="form-group">
-				<button id="makeCancellationBtn" class="btn btn-danger btn-block btn-lg">Hacer una Cancelacíon &raquo;</button>
+				<button id="makeCancellationBtn" class="btn btn-danger btn-block btn-lg">Hacer una Cancelación &raquo;</button>
 			</div>
 	</div>
 </div>

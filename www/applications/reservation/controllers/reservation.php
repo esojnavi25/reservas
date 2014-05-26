@@ -251,7 +251,7 @@ class Reservation_Controller extends ZP_Load
 	public function cancel_seat($seatID, $resID)
 	{
 		# code...
-		$success = $this->Seat_Model->freeStatusByID($seatID, FREE_STATUS);
+		$success = $this->Seat_Model->updateStatusByID($seatID, FREE_STATUS);
 		if($success){
 			redirect(path("reservation/cancellations/".$resID));
 		}

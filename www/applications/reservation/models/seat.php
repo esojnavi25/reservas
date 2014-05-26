@@ -37,7 +37,7 @@ class Seat_Model extends ZP_Load
 		return $this->Db->updateBySQL($this->table, "Status='$status', Reservation=$reservation WHERE Position='$position' LIMIT 1");
 	}
 
-	public function freeStatusByID($seatID, $status)
+	public function updateStatusByID($seatID, $status)
 	{
 		# code...
 		return $this->Db->updateBySQL($this->table, "Status='$status', Reservation=1 WHERE ID_Seat=$seatID LIMIT 1");

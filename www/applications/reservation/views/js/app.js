@@ -16,6 +16,21 @@ function success_reserveSeats(data) {
       window.location = baseUrl;
     }
   });
+  BootstrapDialog.show({
+    title: 'Confirmación',
+    message: 'Su reservación ha sido guardada\nUse su número de reservación para cancelaciones de asientos\nNúmero de Reservación: '+ reservation.id + "",
+    buttons: [{
+      label: 'OK',
+      action: function(dialog) {
+        dialog.setTitle('Title 1');
+      }
+    }, {
+      label: 'Title 2',
+      action: function(dialog) {
+        dialog.setTitle('Title 2');
+      }
+    }]
+  });
 }
 
 function reserveSeats() {
