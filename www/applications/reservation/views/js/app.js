@@ -7,15 +7,7 @@ var reservation = {
 
 var mySeats = [];
 
-function success_reserveSeats(data) {
-  // body...
-  // BootstrapDialog.confirm("Su reservación ha sido guardada\nUse su número de reservación para cancelaciones de asientos\nNúmero de Reservación: " + reservation.id + "", function(result){
-  //   if(result) {
-  //     window.location = baseUrl + "/reservation/logout";
-  //   }else{
-  //     window.location = baseUrl;
-  //   }
-  // });
+function success_reserveSeats(data) {  
   BootstrapDialog.show({
     title: 'Reservación hecha',
     type: BootstrapDialog.TYPE_INFO,
